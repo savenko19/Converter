@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TestConverter</string>
+
+    //Selection screen
+    <string name="selection_screen_title">Выберите валюту</string>
+    <string name="selection_screen_subtitle">Обновлено:</string>
+</resources>
