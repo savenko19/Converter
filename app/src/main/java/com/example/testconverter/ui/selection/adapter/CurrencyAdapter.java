@@ -11,28 +11,40 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.testconverter.R;
 import com.example.testconverter.model.pojo.Currency;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.ViewHolder> {
 
-    ArrayList<Currency> mCurrencies;
+    public interface OnItemClickListener {
+        void onItemClick(ArrayList<Currency> currencies);
+    }
 
-    public CurrencyAdapter(ArrayList<Currency> currencies) {
+    private View itemView;
+    private OnItemClickListener mItemClickListener;
+    private ArrayList<Currency> mCurrencies;
+
+    public CurrencyAdapter(ArrayList<Currency> currencies, OnItemClickListener onItemClickListener) {
         mCurrencies = currencies;
+        mItemClickListener = onItemClickListener;
     }
 
     @NonNull
     @Override
     public CurrencyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.currensy_item_layout, parent, false);
-        return new ViewHolder(itemView);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.currensy_item_layout, parent, false);
+        return new ViewHolder(itemView, mItemClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CurrencyAdapter.ViewHolder holder, int position) {
+        if (mCurrencies.get(position).isSelect()) {
+            itemView.setBackground(itemView.getResources().getDrawable(R.drawable.selected_bg));
+        }
         holder.charCodeView.setText(mCurrencies.get(position).getCharCode());
         holder.nameView.setText(mCurrencies.get(position).getName());
-        holder.valueView.setText(String.valueOf(mCurrencies.get(position).getValue()));
+        holder.valueView.setText(new DecimalFormat("##.###").format(mCurrencies.get(position).getValue()
+                / mCurrencies.get(position).getNominal()));
     }
 
     @Override
@@ -40,17 +52,32 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.ViewHo
         return mCurrencies.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+        OnItemClickListener onItemClickListener;
 
         TextView charCodeView;
         TextView nameView;
         TextView valueView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
             charCodeView = itemView.findViewById(R.id.char_code_view);
             nameView = itemView.findViewById(R.id.name_view);
             valueView = itemView.findViewById(R.id.value_view);
+
+            this.onItemClickListener = onItemClickListener;
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            for (Currency currency : mCurrencies) {
+                currency.setSelect(false);
+            }
+            mCurrencies.get(getAdapterPosition()).setSelect(true);
+            onItemClickListener.onItemClick(mCurrencies);
         }
     }
 }

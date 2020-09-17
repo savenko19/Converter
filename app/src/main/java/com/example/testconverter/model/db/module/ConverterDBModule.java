@@ -1,5 +1,7 @@
 package com.example.testconverter.model.db.module;
 
+import android.util.Log;
+
 import com.example.testconverter.model.db.entity.CurrencyEntity;
 import com.example.testconverter.model.db.service.DBService;
 import com.example.testconverter.model.pojo.Currency;
@@ -33,8 +35,10 @@ public class ConverterDBModule implements DBModule {
             mCurrencyEntity.setName(currency.getName());
             mCurrencyEntity.setValue(currency.getValue());
             mCurrencyEntity.setPrevious(currency.getPrevious());
+            mCurrencyEntity.setSelect(currency.isSelect());
         } else {
-
+            Log.d("myLog", "set selected");
+            mCurrencyEntity.setSelect(currency.isSelect());
         }
 
         mRealm.commitTransaction();
@@ -59,6 +63,27 @@ public class ConverterDBModule implements DBModule {
             }
 
             return mCurrencies;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public Currency getSelectedCurrency() {
+        CurrencyEntity mCurrencyEntity = mRealm.where(CurrencyEntity.class).equalTo("isSelect", true).findFirst();
+
+        if (mCurrencyEntity != null) {
+            Currency currency = new Currency(
+                    mCurrencyEntity.getId(),
+                    mCurrencyEntity.getNumCode(),
+                    mCurrencyEntity.getCharCode(),
+                    mCurrencyEntity.getNominal(),
+                    mCurrencyEntity.getName(),
+                    mCurrencyEntity.getValue(),
+                    mCurrencyEntity.getPrevious()
+            );
+
+            return currency;
         } else {
             return null;
         }

@@ -27,13 +27,13 @@ public class CurrencyRest {
 
     @SerializedName("Value")
     @Expose
-    private double value;
+    private float value;
 
     @SerializedName("Previous")
     @Expose
-    private double previous;
+    private float previous;
 
-    public CurrencyRest(String id, String numCode, String charCode, int nominal, String name, double value, double previous) {
+    public CurrencyRest(String id, String numCode, String charCode, int nominal, String name, float value, float previous) {
         this.id = id;
         this.numCode = numCode;
         this.charCode = charCode;
@@ -83,19 +83,19 @@ public class CurrencyRest {
         this.name = name;
     }
 
-    public double getValue() {
+    public float getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(float value) {
         this.value = value;
     }
 
-    public double getPrevious() {
+    public float getPrevious() {
         return previous;
     }
 
-    public void setPrevious(double previous) {
+    public void setPrevious(float previous) {
         this.previous = previous;
     }
 }

@@ -17,4 +17,9 @@ public class SelectionInteractorImpl implements SelectionInteractor {
     public List<Currency> getAllCurrencies() {
         return mManager.getAllCurrencies();
     }
+
+    @Override
+    public void addCurrency(Currency currency) {
+        mManager.addCurrency(currency);
+    }
 }

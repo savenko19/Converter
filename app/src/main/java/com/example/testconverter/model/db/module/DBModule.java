@@ -9,4 +9,6 @@ public interface DBModule {
     void addCurrency(Currency currency);
 
     List<Currency> getAllCurrencies();
+
+    Currency getSelectedCurrency();
 }

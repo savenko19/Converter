@@ -19,4 +19,9 @@ public class SelectionPresenterImpl extends BasePresenter<SelectionView> impleme
     public void viewIsReady() {
         getView().showCurrencies((ArrayList<Currency>) mInteractor.getAllCurrencies());
     }
+
+    @Override
+    public void addCurrency(Currency currency) {
+        mInteractor.addCurrency(currency);
+    }
 }

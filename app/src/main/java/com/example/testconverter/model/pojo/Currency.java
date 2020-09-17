@@ -7,10 +7,11 @@ public class Currency {
     private String charCode;
     private int nominal;
     private String name;
-    private double value;
-    private double previous;
+    private float value;
+    private float previous;
+    private boolean isSelect;
 
-    public Currency(String id, String numCode, String charCode, int nominal, String name, double value, double previous) {
+    public Currency(String id, String numCode, String charCode, int nominal, String name, float value, float previous) {
         this.id = id;
         this.numCode = numCode;
         this.charCode = charCode;
@@ -18,6 +19,7 @@ public class Currency {
         this.name = name;
         this.value = value;
         this.previous = previous;
+        isSelect = false;
     }
 
     public String getId() {
@@ -60,19 +62,27 @@ public class Currency {
         this.name = name;
     }
 
-    public double getValue() {
+    public float getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(float value) {
         this.value = value;
     }
 
-    public double getPrevious() {
+    public float getPrevious() {
         return previous;
     }
 
-    public void setPrevious(double previous) {
+    public void setPrevious(float previous) {
         this.previous = previous;
+    }
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
     }
 }

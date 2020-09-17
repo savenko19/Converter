@@ -7,4 +7,6 @@ import java.util.List;
 public interface SelectionInteractor {
 
     List<Currency> getAllCurrencies();
+
+    void addCurrency(Currency currency);
 }

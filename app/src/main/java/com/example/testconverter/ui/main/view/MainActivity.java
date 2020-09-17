@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.testconverter.R;
+import com.example.testconverter.model.preferences.PreferencesHelper;
 import com.example.testconverter.ui.main.presenter.MainPresenter;
 import com.example.testconverter.ui.main.presenter.factory.MainPresenterFactory;
 import com.example.testconverter.ui.selection.view.SelectionActivity;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PreferencesHelper.initPreferences(this);
 
         mPresenter = MainPresenterFactory.createPresenter(this);
         mPresenter.onAttachView(this);

@@ -13,4 +13,6 @@ public interface Manager {
     void addCurrency(Currency currency);
 
     List<Currency> getAllCurrencies();
+
+    Currency getSelectedCurrency();
 }

@@ -11,8 +11,9 @@ public class CurrencyEntity extends RealmObject {
     private String charCode;
     private int nominal;
     private String name;
-    private double value;
-    private double previous;
+    private float value;
+    private float previous;
+    private boolean isSelect;
 
     public String getId() {
         return id;
@@ -54,19 +55,27 @@ public class CurrencyEntity extends RealmObject {
         this.name = name;
     }
 
-    public double getValue() {
+    public float getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(float value) {
         this.value = value;
     }
 
-    public double getPrevious() {
+    public float getPrevious() {
         return previous;
     }
 
-    public void setPrevious(double previous) {
+    public void setPrevious(float previous) {
         this.previous = previous;
+    }
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
     }
 }

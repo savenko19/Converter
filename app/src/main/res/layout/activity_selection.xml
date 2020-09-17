@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#cfdaec"
+    android:background="#9cb9d1"
     tools:context=".ui.selection.view.SelectionActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,15 +14,19 @@
         android:background="#9cb9d1"
         app:layout_constraintTop_toTopOf="parent"
         app:subtitle="@string/selection_screen_subtitle"
+        app:subtitleTextColor="#EEF0F6"
         app:title="@string/selection_screen_title"
         app:titleTextColor="#EEF0F6"
-        app:subtitleTextColor="#EEF0F6"></androidx.appcompat.widget.Toolbar>
+        android:paddingBottom="32dp">
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/currency_recycler"
         android:layout_width="match_parent"
+        android:background="@drawable/list_selector"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

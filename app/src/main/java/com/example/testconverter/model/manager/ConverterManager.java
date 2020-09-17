@@ -32,4 +32,9 @@ public class ConverterManager implements Manager {
     public List<Currency> getAllCurrencies() {
         return mDBModule.getAllCurrencies();
     }
+
+    @Override
+    public Currency getSelectedCurrency() {
+        return mDBModule.getSelectedCurrency();
+    }
 }

@@ -3,6 +3,7 @@ package com.example.testconverter.ui.main.presenter;
 import android.util.Log;
 
 import com.example.testconverter.model.pojo.Currency;
+import com.example.testconverter.model.preferences.PreferencesHelper;
 import com.example.testconverter.model.rest.data.CurrencyRest;
 import com.example.testconverter.model.rest.data.DataRest;
 import com.example.testconverter.model.rest.listener.OnLoadListener;
@@ -28,7 +29,7 @@ public class MainPresenterImpl extends BasePresenter<MainView> implements MainPr
             public void onLoadSuccess(DataRest result) throws InterruptedException {
                 //Success
                 for (Map.Entry<String, CurrencyRest> entry : result.getCurrencyRestMap().entrySet()) {
-                    Log.d("myLog", "Currency: " + entry.getValue().getName());
+                    Log.d("myLog", "Date: " + result.getDate());
                     CurrencyRest currencyRest = entry.getValue();
                     Currency currency = new Currency(
                             currencyRest.getId(),
