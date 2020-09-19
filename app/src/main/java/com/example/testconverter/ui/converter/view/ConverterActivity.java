@@ -2,10 +2,13 @@ package com.example.testconverter.ui.converter.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +17,7 @@ import com.example.testconverter.R;
 import com.example.testconverter.model.pojo.Currency;
 import com.example.testconverter.ui.converter.presenter.ConverterPresenter;
 import com.example.testconverter.ui.converter.presenter.factory.ConverterPresenterFactory;
+import com.example.testconverter.ui.selection.view.SelectionActivity;
 
 import java.text.DecimalFormat;
 
@@ -32,6 +36,7 @@ public class ConverterActivity extends AppCompatActivity implements ConverterVie
 
     private TextView rurInfo;
 
+    private Button selectCurrency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,16 @@ public class ConverterActivity extends AppCompatActivity implements ConverterVie
         preValue = findViewById(R.id.pre_value);
 
         rurInfo = findViewById(R.id.rur_info);
+
+        selectCurrency = findViewById(R.id.currency_list_btn);
+        selectCurrency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConverterActivity.this, SelectionActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override
@@ -80,9 +95,8 @@ public class ConverterActivity extends AppCompatActivity implements ConverterVie
         currencyName.setText(selectedCurrency.getName());
         currencyNameCode.setText(selectedCurrency.getCharCode());
 
-        Log.d("myLog", "Value: " + selectedCurrency.getValue() + " Nominal: " + selectedCurrency.getNominal());
-        currentValue.setText(String.valueOf(selectedCurrency.getValue() / selectedCurrency.getNominal()));
-        preValue.setText(String.valueOf(selectedCurrency.getPrevious() / selectedCurrency.getNominal()));
+        currentValue.setText(String.valueOf(selectedCurrency.getValue() / selectedCurrency.getNominal()) + " RUR");
+        preValue.setText(String.valueOf(selectedCurrency.getPrevious() / selectedCurrency.getNominal()) + " RUR");
 
         if (selectedCurrency.getValue() / selectedCurrency.getNominal()
                 > selectedCurrency.getPrevious() / selectedCurrency.getNominal()) {

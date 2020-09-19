@@ -2,7 +2,10 @@ package com.example.testconverter.ui.selection.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +27,11 @@ public class SelectionActivity extends AppCompatActivity implements SelectionVie
     private RecyclerView currencyRecycler;
     private CurrencyAdapter mCurrencyAdapter;
 
+    private AlertDialog.Builder aBuilder;
+    private AlertDialog dialog;
+
+    private Button updateButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +42,15 @@ public class SelectionActivity extends AppCompatActivity implements SelectionVie
 
         currencyRecycler = findViewById(R.id.currency_recycler);
         currencyRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        updateButton = findViewById(R.id.update_btn);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //update
+                mPresenter.updateData();
+            }
+        });
     }
 
     @Override
@@ -64,6 +81,15 @@ public class SelectionActivity extends AppCompatActivity implements SelectionVie
     }
 
     @Override
+    public void showDialog() {
+        aBuilder = new AlertDialog.Builder(this);
+        View customView = getLayoutInflater().inflate(R.layout.dialog_layout, null);
+        aBuilder.setView(customView);
+        dialog = aBuilder.create();
+        dialog.show();
+    }
+
+    @Override
     public void onItemClick(ArrayList<Currency> currencies) {
 
         for (Currency currency : currencies) {
@@ -72,4 +98,6 @@ public class SelectionActivity extends AppCompatActivity implements SelectionVie
         Intent intent = new Intent(SelectionActivity.this, ConverterActivity.class);
         startActivity(intent);
     }
+
+
 }

@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
         android:textColor="@android:color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +37,7 @@
         android:id="@+id/value_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="sans-serif"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:layout_marginTop="16dp"

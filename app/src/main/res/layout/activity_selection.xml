@@ -7,26 +7,29 @@
     android:background="#9cb9d1"
     tools:context=".ui.selection.view.SelectionActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/update_btn"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#9cb9d1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:subtitle="@string/selection_screen_subtitle"
-        app:subtitleTextColor="#EEF0F6"
-        app:title="@string/selection_screen_title"
-        app:titleTextColor="#EEF0F6"
-        android:paddingBottom="32dp">
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_margin="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/currency_item_selector"
+        android:text="Обновить"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/currency_recycler"
         android:layout_width="match_parent"
-        android:background="@drawable/list_selector"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/list_selector"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/update_btn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

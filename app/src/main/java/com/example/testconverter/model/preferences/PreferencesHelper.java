@@ -11,5 +11,11 @@ public class PreferencesHelper {
          mSharedPreferences = context.getSharedPreferences("main", Context.MODE_PRIVATE);
      }
 
+     public static void setUpdateDate(String date) {
+         mSharedPreferences.edit().putString("date", date).apply();
+     }
 
+     public static String getUpdateDate() {
+         return mSharedPreferences.getString("date", null);
+     }
 }

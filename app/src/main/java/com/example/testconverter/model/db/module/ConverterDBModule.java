@@ -37,7 +37,6 @@ public class ConverterDBModule implements DBModule {
             mCurrencyEntity.setPrevious(currency.getPrevious());
             mCurrencyEntity.setSelect(currency.isSelect());
         } else {
-            Log.d("myLog", "set selected");
             mCurrencyEntity.setSelect(currency.isSelect());
         }
 

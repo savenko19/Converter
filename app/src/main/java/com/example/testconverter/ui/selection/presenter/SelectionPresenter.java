@@ -4,7 +4,13 @@ import com.example.testconverter.model.pojo.Currency;
 import com.example.testconverter.ui.mvp.MvpPresenter;
 import com.example.testconverter.ui.selection.view.SelectionView;
 
+import java.util.ArrayList;
+
 public interface SelectionPresenter extends MvpPresenter<SelectionView> {
 
     void addCurrency(Currency currency);
+
+    ArrayList<Currency> updateData();
+
+
 }

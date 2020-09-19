@@ -8,4 +8,6 @@ import java.util.ArrayList;
 public interface SelectionView extends MvpView {
 
     void showCurrencies(ArrayList<Currency> currencies);
+
+    void showDialog();
 }
