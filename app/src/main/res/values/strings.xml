@@ -3,5 +3,16 @@
 
     //Selection screen
     <string name="selection_screen_title">Выберите валюту</string>
-    <string name="selection_screen_subtitle">Обновлено:</string>
+    <string name="update_btn">Обновить</string>
+
+    //Converter screen
+    <string name="currency_list_btn">Список валют</string>
+    <string name="rur_title">Российский рубль</string>
+    <string name="enter_hint">Введите сумму</string>
+    <string name="rur_char_code">RUR</string>
+
+    <string name="current_value_title">Текущий курс</string>
+    <string name="pre_value_title">Прошлый курс</string>
+
+    <string name="more_info_title">Подробная информация</string>
 </resources>

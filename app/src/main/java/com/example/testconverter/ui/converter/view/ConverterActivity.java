@@ -95,8 +95,8 @@ public class ConverterActivity extends AppCompatActivity implements ConverterVie
         currencyName.setText(selectedCurrency.getName());
         currencyNameCode.setText(selectedCurrency.getCharCode());
 
-        currentValue.setText(String.valueOf(selectedCurrency.getValue() / selectedCurrency.getNominal()) + " RUR");
-        preValue.setText(String.valueOf(selectedCurrency.getPrevious() / selectedCurrency.getNominal()) + " RUR");
+        currentValue.setText(String.valueOf(selectedCurrency.getValue() / selectedCurrency.getNominal()) + getString(R.string.rur_char_code));
+        preValue.setText(String.valueOf(selectedCurrency.getPrevious() / selectedCurrency.getNominal()) + getString(R.string.rur_char_code));
 
         if (selectedCurrency.getValue() / selectedCurrency.getNominal()
                 > selectedCurrency.getPrevious() / selectedCurrency.getNominal()) {
